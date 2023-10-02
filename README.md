@@ -30,3 +30,7 @@ Multi-threaded is 59.24% faster than single-threaded.
 ```
 
 *This is ran on my Ryzen 5 2600 with 6 cores and 12 threads. Performance may be different on your system...*
+
+# Running the benchmark
+
+To run simply run the [test.sh](./test.sh) script. It will compile the code and run the benchmark.
