@@ -19,17 +19,17 @@ fn main() {
         "normal" => {
             f32::run();
             exit(0)
-        },
+        }
         "vec" => {
             f32_vec::run();
             exit(0)
-        },
+        }
         "all" => {
             f32::run();
             f32_vec::run();
             exit(0)
-        },
-        _ => println!("Please provide a test type: normal or vec")
+        }
+        _ => println!("Please provide a test type: normal or vec"),
     }
 }
 
@@ -47,15 +47,24 @@ pub fn process_multi_thread(data: &mut [f32]) {
     });
 }
 
-pub fn calculate_speedup_percent(single_duration: std::time::Duration, multi_duration: std::time::Duration) {
+pub fn calculate_speedup_percent(
+    single_duration: std::time::Duration,
+    multi_duration: std::time::Duration,
+) {
     let single_time = single_duration.as_secs_f64();
     let multi_time = multi_duration.as_secs_f64();
 
     if single_time > multi_time {
         let percent = ((single_time - multi_time) / single_time) * 100.0;
-        println!("Multi-threaded is {:.2}% faster than single-threaded.", percent);
+        println!(
+            "Multi-threaded is {:.2}% faster than single-threaded.",
+            percent
+        );
     } else {
         let percent = ((multi_time - single_time) / multi_time) * 100.0;
-        println!("Single-threaded is {:.2}% faster than multi-threaded.", percent);
+        println!(
+            "Single-threaded is {:.2}% faster than multi-threaded.",
+            percent
+        );
     };
 }

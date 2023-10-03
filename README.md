@@ -33,21 +33,21 @@ Multi-threaded is 59.24% faster than single-threaded.
 
 Vectorized Test:
 ```rs
-Vector 1 size 1,000,000 Single-threaded time: 1.391015ms
-Vector 1 size 1,000,000 Multi-threaded time: 8.626289ms
-Single-threaded is 83.87% faster than multi-threaded.
+Vector 1 size 1,000,000 Single-threaded time: 366.938µs
+Vector 1 size 1,000,000 Multi-threaded time: 3.733378ms
+Single-threaded is 90.17% faster than multi-threaded.
 ------------------------------------------------------------
-Vector 2 size 10,000,000 Single-threaded time: 11.615982ms
-Vector 2 size 10,000,000 Multi-threaded time: 21.087446ms
-Single-threaded is 44.92% faster than multi-threaded.
+Vector 2 size 10,000,000 Single-threaded time: 5.808091ms
+Vector 2 size 10,000,000 Multi-threaded time: 8.105488ms
+Single-threaded is 28.34% faster than multi-threaded.
 ------------------------------------------------------------
-Vector 3 size 100,000,000 Single-threaded time: 71.83786ms
-Vector 3 size 100,000,000 Multi-threaded time: 112.664014ms
-Single-threaded is 36.24% faster than multi-threaded.
+Vector 3 size 100,000,000 Single-threaded time: 60.996867ms
+Vector 3 size 100,000,000 Multi-threaded time: 98.880694ms
+Single-threaded is 38.31% faster than multi-threaded.
 ------------------------------------------------------------
-Vector 4 size 1,000,000,000 Single-threaded time: 542.09973ms
-Vector 4 size 1,000,000,000 Multi-threaded time: 910.513689ms
-Single-threaded is 40.46% faster than multi-threaded.
+Vector 4 size 1,000,000,000 Single-threaded time: 618.643122ms
+Vector 4 size 1,000,000,000 Multi-threaded time: 907.586136ms
+Single-threaded is 31.84% faster than multi-threaded.
 ------------------------------------------------------------
 ```
 

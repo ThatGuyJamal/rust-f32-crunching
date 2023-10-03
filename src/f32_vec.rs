@@ -25,28 +25,33 @@ pub fn run() {
 
         let chunk: Vec<_> = data_vectors[chunk_start..chunk_end].to_vec();
 
-        let single_threads: Vec<JoinHandle<Duration>> = chunk.iter().map(|data| {
-            let data: Arc<Mutex<Vec<f32>>> = data.clone();
-            thread::spawn(move || {
+        let chunk_clone = chunk.clone();
+
+        let single_thread: JoinHandle<Vec<Duration>> = thread::spawn(move || {
+            let d: Vec<Duration> = chunk_clone.iter().map(|data| {
+                let data: Arc<Mutex<Vec<f32>>> = data.clone();
                 let start = Instant::now();
                 process_single_thread(&mut data.lock().unwrap());
                 let single_duration = start.elapsed();
                 single_duration
-            })
-        }).collect();
+            }).collect();
+            d
+        });
 
-        let multi_threads: Vec<JoinHandle<Duration>> = chunk.iter().map(|data| {
-            let data: Arc<Mutex<Vec<f32>>> = data.clone();
-            thread::spawn(move || {
-                let start: Instant = Instant::now();
+
+        let multi_thread: JoinHandle<Vec<Duration>> = thread::spawn(move || {
+            let d: Vec<Duration> = chunk.iter().map(|data| {
+                let data: Arc<Mutex<Vec<f32>>> = data.clone();
+                let start = Instant::now();
                 process_multi_thread(&mut data.lock().unwrap());
-                let multi_duration: Duration = start.elapsed();
+                let multi_duration = start.elapsed();
                 multi_duration
-            })
-        }).collect();
+            }).collect();
+            d
+        });
 
-        let single_durations: Vec<Duration> = single_threads.into_iter().map(|t: JoinHandle<Duration>| t.join().unwrap()).collect();
-        let multi_durations: Vec<Duration> = multi_threads.into_iter().map(|t: JoinHandle<Duration>| t.join().unwrap()).collect();
+        let single_durations: Vec<Duration> = single_thread.join().unwrap();
+        let multi_durations: Vec<Duration> = multi_thread.join().unwrap();
 
         for (i, (single_duration, multi_duration)) in single_durations.iter().zip(multi_durations.iter()).enumerate() {
             let vector_num: usize = chunk_start + i + 1;

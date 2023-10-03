@@ -1,13 +1,16 @@
+use crate::{calculate_speedup_percent, process_multi_thread, process_single_thread};
+use num_format::{Locale, ToFormattedString};
 use std::thread;
 use std::time::Instant;
-use num_format::{Locale, ToFormattedString};
-use crate::{calculate_speedup_percent, process_multi_thread, process_single_thread};
 
 pub fn run() {
     let test_sizes = vec![1_000_000, 10_000_000, 100_000_000, 1_000_000_000];
 
     for &num_values in &test_sizes {
-        println!("Crunching {} numbers...", num_values.to_formatted_string(&Locale::en));
+        println!(
+            "Crunching {} numbers...",
+            num_values.to_formatted_string(&Locale::en)
+        );
 
         let mut data_single: Vec<f32> = (0..num_values).map(|x| x as f32).collect();
         let mut data_multi: Vec<f32> = data_single.clone();
