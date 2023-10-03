@@ -29,7 +29,7 @@ fn main() {
             f32_vec::run();
             exit(0)
         }
-        _ => println!("Please provide a test type: normal or vec"),
+        _ => println!("Please provide a test type: normal, vec, or all"),
     }
 }
 
