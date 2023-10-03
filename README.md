@@ -1,7 +1,7 @@
 # Rust f32 Crunching
 
 This is a simple benchmark to compare the performance of crunching f32s in Rust. I wanted
-to test the speed of single vs multithreaded operations, and how they scale with more data
+to test the speed of single vs. multithreaded operations, and how they scale with more data
 and more threads.
 
 ## Results
@@ -37,22 +37,23 @@ Vectorized Test:
 
 ```
 
-*This is ran on my Ryzen 5 2600 with 6 cores and 12 threads. Performance may be different on your system...*
+_This is ran on my Ryzen 5 2600 with 6 cores and 12 threads. Performance may be different on your system..._
 
-# Running the benchmark
+## Running the benchmark
 
 To run simply run the [test.sh](./test.sh) script. It will compile the code and run the benchmark.
 
 ```shell
 $ ./test.sh normal
 ```
+
 Runs the normal benchmark.
 
-
-```shell
+````shell
 or
 
 ```shell
 $ ./test.sh vec
-```
+````
+
 Runs the vectorized benchmark.
