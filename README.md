@@ -59,6 +59,6 @@ To run simply run the [test.sh](./test.sh) script. It will compile the code and 
 
 Runs the benchmark.
 ```shell
-$ ./test.sh <normal|vec|all>
+$ ./test.sh <normal|vec>
 ````
-Runs the vectorized benchmark.
+If no option is passed it will default and run all the tests.
