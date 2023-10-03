@@ -9,7 +9,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 2 {
-        println!("Please provide a test type: normal, vec, or all");
+        println!("Please provide a test type: normal or all");
         return;
     }
 
@@ -24,12 +24,10 @@ fn main() {
             f32_vec::run();
             exit(0)
         }
-        "all" => {
+        _ => {
             f32::run();
             f32_vec::run();
-            exit(0)
         }
-        _ => println!("Please provide a test type: normal or vec"),
     }
 }
 
