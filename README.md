@@ -32,9 +32,23 @@ Multi-threaded is 59.24% faster than single-threaded.
 ```
 
 Vectorized Test:
-
 ```rs
-
+Vector 1 size 1000000 Single-threaded time: 1.017757ms
+Vector 1 size 1000000 Multi-threaded time: 2.654879ms
+Single-threaded is 61.66% faster than multi-threaded.
+------------------------------------------------------------
+Vector 2 size 10000000 Single-threaded time: 10.71755ms
+Vector 2 size 10000000 Multi-threaded time: 17.842395ms
+Single-threaded is 39.93% faster than multi-threaded.
+------------------------------------------------------------
+Vector 3 size 100000000 Single-threaded time: 79.763388ms
+Vector 3 size 100000000 Multi-threaded time: 123.548612ms
+Single-threaded is 35.44% faster than multi-threaded.
+------------------------------------------------------------
+Vector 4 size 1000000000 Single-threaded time: 608.545214ms
+Vector 4 size 1000000000 Multi-threaded time: 962.778871ms
+Single-threaded is 36.79% faster than multi-threaded.
+------------------------------------------------------------
 ```
 
 _This is ran on my Ryzen 5 2600 with 6 cores and 12 threads. Performance may be different on your system..._
@@ -43,17 +57,12 @@ _This is ran on my Ryzen 5 2600 with 6 cores and 12 threads. Performance may be 
 
 To run simply run the [test.sh](./test.sh) script. It will compile the code and run the benchmark.
 
+Runs the normal benchmark.
 ```shell
 $ ./test.sh normal
 ```
-
-Runs the normal benchmark.
-
-````shell
 or
-
 ```shell
 $ ./test.sh vec
 ````
-
 Runs the vectorized benchmark.
