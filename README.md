@@ -6,6 +6,8 @@ and more threads.
 
 ## Results
 
+Normal Test:
+
 ```rs
 Crunching 1,000,000 numbers...
 Single-threaded time: 858.352µs
@@ -29,8 +31,28 @@ Multi-threaded is 59.24% faster than single-threaded.
 ------------------------------------------------------------
 ```
 
+Vectorized Test:
+
+```rs
+
+```
+
 *This is ran on my Ryzen 5 2600 with 6 cores and 12 threads. Performance may be different on your system...*
 
 # Running the benchmark
 
 To run simply run the [test.sh](./test.sh) script. It will compile the code and run the benchmark.
+
+```shell
+$ ./test.sh normal
+```
+Runs the normal benchmark.
+
+
+```shell
+or
+
+```shell
+$ ./test.sh vec
+```
+Runs the vectorized benchmark.

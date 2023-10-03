@@ -2,4 +2,4 @@
 
 cargo build --release
 cd ./target/release || exit
-./treads
+./treads "$@" # pass all arguments to the binary
