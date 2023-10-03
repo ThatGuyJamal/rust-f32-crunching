@@ -1,5 +1,6 @@
 use rayon::prelude::*;
 use std::env;
+use std::process::exit;
 
 mod f32;
 mod f32_vec;
@@ -8,15 +9,26 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 2 {
-        println!("Please provide a test type: normal or vec");
+        println!("Please provide a test type: normal, vec, or all");
         return;
     }
 
     let test_type = &args[1];
 
     match test_type.as_str() {
-        "normal" => f32::run(),
-        "vec" => f32_vec::run(),
+        "normal" => {
+            f32::run();
+            exit(0)
+        },
+        "vec" => {
+            f32_vec::run();
+            exit(0)
+        },
+        "all" => {
+            f32::run();
+            f32_vec::run();
+            exit(0)
+        },
         _ => println!("Please provide a test type: normal or vec")
     }
 }

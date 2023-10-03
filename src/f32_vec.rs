@@ -2,13 +2,14 @@ use std::thread;
 use std::time::{Duration, Instant};
 use std::sync::{Arc, Mutex};
 use std::thread::JoinHandle;
+use num_format::{Locale, ToFormattedString};
 use crate::{calculate_speedup_percent, process_multi_thread, process_single_thread};
 
 type FloatVector = Arc<Mutex<Vec<f32>>>;
 
 pub fn run() {
     let vector_sizes: Vec<i32> = vec![1_000_000, 10_000_000, 100_000_000, 1_000_000_000];
-    let chunk_size: usize = 4; // Define the number of vectors to process in each chunk
+    let chunk_size: usize = 10_000; // Define the number of vectors to process in each chunk
     let mut data_vectors: Vec<FloatVector> = Vec::new();
 
     // Create and populate the vectors with different sizes
@@ -49,8 +50,10 @@ pub fn run() {
 
         for (i, (single_duration, multi_duration)) in single_durations.iter().zip(multi_durations.iter()).enumerate() {
             let vector_num: usize = chunk_start + i + 1;
-            println!("Vector {} size {} Single-threaded time: {:?}", vector_num, vector_sizes[vector_num - 1], single_duration);
-            println!("Vector {} size {} Multi-threaded time: {:?}", vector_num, vector_sizes[vector_num - 1], multi_duration);
+            let formatted_size = vector_sizes[vector_num - 1].to_formatted_string(&Locale::en);
+
+            println!("Vector {} size {} Single-threaded time: {:?}", vector_num, formatted_size.clone(), single_duration);
+            println!("Vector {} size {} Multi-threaded time: {:?}", vector_num, formatted_size, multi_duration);
             calculate_speedup_percent(*single_duration, *multi_duration);
             println!("------------------------------------------------------------");
         }
